@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<Meta http-equiv="Refresh" Content="3; Url=/">
+		<title>BOOKS MANAGEMENT SYSTEM</title>
+		<script language="javascript">
+		var nn = 2;
+		function num()
+		{
+		 document.getElementById("nuber").innerHTML = nn;
+		 nn --;
+		}
+		function SetNum()
+		{
+		 setInterval("num()",1000);
+		}
+		</script>
+	</head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+	 	<link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'> 
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+			
+		</noscript>
+		<style type="text/css">
+		#header{
+		padding:2em 0em 2em 1em;
+		text-align: left;
+		position: relative;
+		background: #cccccc;
+		}
+		label
+		{
+			display: block;
+		}
+		</style>
+
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+		
+
+	</head>
+	
+	<body class="homepage" onLoad="SetNum();">
+		<!-- Header -->
+		<div id="header">
+			<div class="container"> 
+
+				
+				<!-- Logo -->
+				<div id="logo">
+					<h1><a href="">Books Management System</a></h1>
+				</div>
+				
+			</div>
+		</div>
+
+		{%if not book_exist%}
+		<p>No such book.</p>
+		{%else%}
+		<p>操作完成，<span id="nuber" style="color:#FF0000;">3</span>秒后返回...</p>
+		{%endif%}
+		
+
+		<!-- Copyright -->
+		<div id="copyright">
+			<div class="container">
+				Copyright &copy; 2015.Rachel Lee All rights reserved.<a target="_blank" href="http://376018937.qzone.com">团队日志</a>
+			</div>
+		</div>

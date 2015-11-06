@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+		{% block content %}
+		<!-- Main -->
+		<div id = "main">
+			<div id=showBook>
+				<h2>All books:</h2>
+				{%if not book_list%}
+				<p>No result.</p>
+				{%else%}
+				<ol>
+					{%for book in book_list%}
+		    		<li><a href="/books/{{book.ISBN}}">{{book.Title}}</a></li>
+					{%endfor%}
+				</ol>
+				{%endif%}
+			</div>
+			<div id = "search">
+                <h2> Search here:</h2>
+				<form action="/search_result/" method="post" >
+					<label for="isearch_author">Enter author to search books:</label>
+					<input type="text"  name="search_author" id="isearch_author" value="" />
+					<input type="submit" value="Search" name="submitBtn" />
+				</form>
+			</div>
+
+			<div id = "addBook">
+                <h2> Add a new book:</h2>
+				<form action="" method="POST" >
+					<label for="iISBN">ISBN:</label>
+					<input type="text" value="{{ISBN}}" name="ISBN" id="iISBN" />
+					<label for="iTitle">Title:</label>
+					<input type="text" value="{{Title}}" name="Title" id="iTitle" />
+					<label for="iAuthorName">Author Name:</label>
+					<input type="text" value="{{AuthorName}}" name="AuthorName" id="iAuthorName" />
+					<label for="iPublisher">Publisher:</label>
+					<input type="text" value="{{Publisher}}" name="Publisher" id="iPublisher" />	
+					{%if not author_exist or error_list%}
+                    <p>Please choose the publish date again.</p>
+                    {%endif%}
+					<label>Publish Date:</label>	
+				    <label for="iyear">year:</label>
+				    <select name="year" id="iyear">
+				    {% for year_item in year_list%}
+				    {%if forloop.first%}
+				      <option value="{{year_item}}" selected="selected">
+				    {% else %}
+				      <option value="{{year_item}}">
+				    {% endif %}  
+				    {{year_item}}</option>
+				    {% endfor %}
+				    </select>
+
+				    <select name="month" id="imonth">
+				    {% for month_item in month_list%}
+				    {%if forloop.first%}
+				      <option value="{{month_item}}" selected="selected">
+				    {%else%}
+				      <option value="{{month_item}}">
+				    {% endif %}  
+				    {{month_item}}</option>
+				    {%endfor%}
+				    </select>
+
+				    <select name="day" id="iday">
+				    {% for day_item in day_list%}
+				    {%if forloop.first%}
+				      <option value="{{day_item}}" selected="selected">
+				    {%else%}
+				      <option value="{{day_item}}">
+				    {%endif%}  
+				    {{day_item}}</option>
+				    {%endfor%}
+				    </select>
+
+					<label for="iPrice">Price:</label>
+					<input type="text" value="{{Price}}" name="Price" id="iPrice" />
+					{%if not error_list%}
+						{%if not author_exist%}
+                    	<p>The author doesn't exist,please complete the information.</p>
+						<label for="iAuthorAge">Author Age:</label>
+						<input type="text" value="" name="AuthorAge" id="iAuthorAge" />
+						<label for="iAuthorCountry">Author Country:</label>
+						<input type="text" value="" name="AuthorCountry" id="iAuthorCountry" />
+						{%endif%}					
+					
+					{%else%}
+						{%for error in error_list%}
+						<p>{{error}}</p>
+						{%endfor%}
+						{%if not author_exist%}
+						<label for="iAuthorAge">Author Age:</label>
+						<input type="text" value="" name="AuthorAge" id="iAuthorAge" />
+						<label for="iAuthorCountry">Author Country:</label>
+						<input type="text" value="" name="AuthorCountry" id="iAuthorCountry"/>
+						{%endif%}
+					{%endif%}
+					<input type="submit" value="Add" name="submitBtn" />		    
+				</form>
+			</div>
+
+
+
+
+		
+		</div>
+		{% endblock %}

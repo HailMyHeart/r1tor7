@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+		{% block content %}
+		<div id = "main">
+		{%if not books_list%}
+		<p>No result.</p>
+		{%else%}
+		<ol>
+			{%for book in books_list%}
+    		<li><a href="/books/{{book.ISBN}}">{{book.Title}}</a></li>
+			{%endfor%}
+		</ol>
+		{%endif%}
+		</div>
+		{%endblock%}

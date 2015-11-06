@@ -1,0 +1,22 @@
+
+{% extends "base.html" %}
+		{% block content %}
+		
+		<div id = "main">
+		{%if book%}
+		<p>ISBN:{{book.ISBN}}</p>
+		<p> Title:{{book.Title}}</p>
+		<p>Author ID:{{book.AuthorID.AuthorID}}</p>
+		<p>Author Name:{{book.AuthorID.Name}}</p>
+		<p>Author Age:{{book.AuthorID.Age}}</p>
+		<p>Author Country:{{book.AuthorID.Country}}</p>
+		<p> Publisher:{{book.Publisher}}</p>
+		<p>Publish Date:{{book.PublishDate}}</p>
+		<p>Price:{{book.Price}}</p>
+		<p><a href="/delete/{{book.ISBN}}">Delete</a>&nbsp<a href="/update/{{book.ISBN}}">Update</a></p>
+		{%else%}
+		<p>No such book.</p>
+		{%endif%}
+		</div>
+
+		{%endblock%}
